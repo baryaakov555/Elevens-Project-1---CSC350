@@ -55,13 +55,19 @@ namespace Elevens
         public void ReplaceCards(List<int> selected)
         {
             foreach (int i in selected)
+            {
                 if (deck.Size() > 0)
                     board[i] = deck.Deal();
+                else
+                    board[i] = null;
+            }
         }
+
 
         public bool GameOver()
         {
-            return false;
+            return !AnotherPlayIsPossible() && deck.Size() == 0;
         }
+
     }
 }
